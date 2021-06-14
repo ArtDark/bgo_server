@@ -1,0 +1,28 @@
+###
+GET http://localhost:9999/getCards HTTP/1.1
+
+###
+POST http://localhost:9999/getCards HTTP/1.1
+
+###
+POST http://localhost:9999/request?key=queryValue1&key=queryValue2 HTTP/1.1
+Accept: text/plain
+Content-Type: application/x-www-form-urlencoded
+
+key=postFormValue1&key=postFormValue2
+###
+POST http://localhost:9999/addCard
+Content-Type: application/json
+
+{
+  "number":"3123 2131 2342 3242",
+  "issuer":"VISA",
+  "owner":{
+    "Name":"Ivan",
+    "Lastname":"Ivanov"
+  },
+  "name_card":"",
+  "type":"Virtual"
+}
+
+
