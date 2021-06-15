@@ -72,6 +72,7 @@ func (s *Server) getCards(w http.ResponseWriter, r *http.Request) {
 func (s *Server) addCard(w http.ResponseWriter, r *http.Request) {
 	cards := s.cardSvc.All(r.Context())
 	card := &card.Card{}
+
 	err := json.NewDecoder(r.Body).Decode(card)
 	if err != nil {
 		log.Println(err)
