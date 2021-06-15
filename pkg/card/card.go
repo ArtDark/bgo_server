@@ -21,7 +21,7 @@ type Owner struct {
 
 type Service struct {
 	mu    sync.RWMutex
-	cards []*Card
+	Cards []*Card
 }
 
 func NewService() *Service {
@@ -31,5 +31,5 @@ func NewService() *Service {
 func (s *Service) All(context.Context) []*Card {
 	s.mu.RLock()
 	defer s.mu.RUnlock()
-	return s.cards
+	return s.Cards
 }

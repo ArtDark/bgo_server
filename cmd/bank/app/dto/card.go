@@ -1,6 +1,6 @@
 package dto
 
-import "bgo_server/pkg/card"
+import "github.com/ArtDark/bgo_server/pkg/card"
 
 type CardDTO struct {
 	Id       int64      `json:"id"`

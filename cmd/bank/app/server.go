@@ -1,9 +1,9 @@
 package app
 
 import (
-	"bgo_server/cmd/bank/app/dto"
-	"bgo_server/pkg/card"
 	"encoding/json"
+	"github.com/ArtDark/bgo_server/cmd/bank/app/dto"
+	"github.com/ArtDark/bgo_server/pkg/card"
 	"log"
 	"net/http"
 )
@@ -71,20 +71,13 @@ func (s *Server) getCards(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) addCard(w http.ResponseWriter, r *http.Request) {
 	cards := s.cardSvc.All(r.Context())
-	card := &card.Card{
-		Id: 0,
-	}
+	card := &card.Card{}
 	err := json.NewDecoder(r.Body).Decode(card)
 	if err != nil {
 		log.Println(err)
 		return
 	}
-	if len(cards) == 0 {
-		cards = append(cards, card)
-		return
 
-	}
-	card.Id += cards[len(cards)-1].Id
 	log.Println(cards)
 	cards = append(cards, card)
 	log.Println(cards)

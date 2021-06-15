@@ -1,8 +1,8 @@
 package main
 
 import (
-	"bgo_server/cmd/bank/app"
-	"bgo_server/pkg/card"
+	"github.com/ArtDark/bgo_server/cmd/bank/app"
+	"github.com/ArtDark/bgo_server/pkg/card"
 	"net"
 	"net/http"
 	"os"
