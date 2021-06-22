@@ -33,3 +33,15 @@ func (s *Service) All(context.Context) []*Card {
 	defer s.mu.RUnlock()
 	return s.Cards
 }
+
+func (s *Service) CreateIdCard() int64 {
+	cards := s.Cards
+
+	if len(cards) == 0 {
+		return 0
+	}
+	lastNum := cards[len(cards)-1].Id
+
+	return lastNum + 1
+
+}

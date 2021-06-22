@@ -17,11 +17,7 @@ Content-Type: application/json
 {
   "number":"3123 2131 2342 3242",
   "issuer":"VISA",
-  "owner":{
-    "Name":"Ivan",
-    "Lastname":"Ivanov"
-  },
-  "name_card":"",
+  "name_card":"New Virtual Card",
   "type":"Virtual"
 }
 
