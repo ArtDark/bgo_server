@@ -62,7 +62,10 @@ func (s *Server) getCards(w http.ResponseWriter, r *http.Request) {
 func (s *Server) addCard(w http.ResponseWriter, r *http.Request) {
 	cards := s.cardSvc.All(r.Context())
 	card := &card.Card{
-		Id: s.cardSvc.CreateIdCard(),
+		Id:     s.cardSvc.CreateIdCard(),
+		Number: "XXXX-XXXX-XXXX-XXXX",
+		//TODO: можно реализовать через https://www.bincodes.com/api-creditcard-generator/
+		Owner: s.cardSvc.GetOwner(),
 	}
 
 	err := json.NewDecoder(r.Body).Decode(card)

@@ -45,3 +45,19 @@ func (s *Service) CreateIdCard() int64 {
 	return lastNum + 1
 
 }
+func (s *Service) GetOwner() Owner {
+	cards := s.Cards
+	if len(cards) == 0 {
+		return Owner{
+			Name:     "",
+			Lastname: "",
+		}
+	}
+
+	owner := Owner{
+		Name:     cards[len(cards)-1].Owner.Name,
+		Lastname: cards[len(cards)-1].Owner.Lastname,
+	}
+
+	return owner
+}

@@ -15,7 +15,7 @@ POST http://localhost:9999/addCard
 Content-Type: application/json
 
 {
-  "number":"3123 2131 2342 3242",
+
   "issuer":"VISA",
   "name_card":"New Virtual Card",
   "type":"Virtual"
