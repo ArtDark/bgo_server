@@ -1,3 +1,3 @@
-module bgo_server
+module github.com/ArtDark/bgo_server
 
 go 1.16

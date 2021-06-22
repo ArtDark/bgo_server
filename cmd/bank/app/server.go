@@ -1,9 +1,9 @@
 package app
 
 import (
-	"bgo_server/cmd/bank/app/dto"
-	"bgo_server/pkg/card"
 	"encoding/json"
+	"github.com/ArtDark/bgo_server/cmd/bank/app/dto"
+	"github.com/ArtDark/bgo_server/pkg/card"
 	"log"
 	"net/http"
 )
@@ -30,17 +30,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) getCards(w http.ResponseWriter, r *http.Request) {
 	cards := s.cardSvc.All(r.Context())
-	//cards = append(cards, &card.Card{
-	//	Id:     0,
-	//	Number: "3123 2131 2342 3242",
-	//	Issuer: "VISA",
-	//	Owner:  card.Owner{
-	//		Name:     "Ivan",
-	//		Lastname: "Ivanov",
-	//	},
-	//	NameCard: "",
-	//	Type: "",
-	//})
+
 	dtos := make([]*dto.CardDTO, len(cards))
 	for i, c := range cards {
 		dtos[i] = &dto.CardDTO{
@@ -72,22 +62,21 @@ func (s *Server) getCards(w http.ResponseWriter, r *http.Request) {
 func (s *Server) addCard(w http.ResponseWriter, r *http.Request) {
 	cards := s.cardSvc.All(r.Context())
 	card := &card.Card{
-		Id: 0,
+		Id:     s.cardSvc.CreateIdCard(),
+		Number: "XXXX-XXXX-XXXX-XXXX",
+		//TODO: можно реализовать через https://www.bincodes.com/api-creditcard-generator/
+		Owner: s.cardSvc.GetOwner(),
 	}
+
 	err := json.NewDecoder(r.Body).Decode(card)
 	if err != nil {
 		log.Println(err)
 		return
 	}
-	if len(cards) == 0 {
-		cards = append(cards, card)
-		return
 
-	}
-	card.Id += cards[len(cards)-1].Id
-	log.Println(cards)
 	cards = append(cards, card)
-	log.Println(cards)
+
+	s.cardSvc.Cards = cards
 
 }
 
