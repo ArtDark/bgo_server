@@ -8,6 +8,7 @@ import (
 	"net/http"
 )
 
+// Server для обработки сервиса картgo
 type Server struct {
 	cardSvc *card.Service
 	mux     *http.ServeMux
@@ -81,9 +82,11 @@ func (s *Server) addCard(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) editCard(w http.ResponseWriter, r *http.Request) {
-	panic("implement me")
+	http.NotFound(w, r)
+	return
 }
 
 func (s *Server) removeCard(w http.ResponseWriter, r *http.Request) {
-	panic("implement me")
+	http.NotFound(w, r)
+	return
 }

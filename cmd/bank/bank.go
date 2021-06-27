@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/ArtDark/bgo_server/cmd/bank/app"
 	"github.com/ArtDark/bgo_server/pkg/card"
+	"log"
 	"net"
 	"net/http"
 	"os"
@@ -23,6 +24,7 @@ func main() {
 	}
 
 	if err := execute(net.JoinHostPort(host, port)); err != nil {
+		log.Println(err)
 		os.Exit(1)
 	}
 }
