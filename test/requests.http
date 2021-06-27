@@ -2,6 +2,12 @@
 GET http://localhost:9999/getCards HTTP/1.1
 
 ###
+PUT http://localhost:9999/editCard HTTP/1.1
+
+###
+DELETE http://localhost:9999/removeCard HTTP/1.1
+
+###
 POST http://localhost:9999/getCards HTTP/1.1
 
 ###
@@ -11,7 +17,7 @@ Content-Type: application/x-www-form-urlencoded
 
 key=postFormValue1&key=postFormValue2
 ###
-POST http://localhost:9999/addCard
+POST http://localhost:9999/addCard HTTP/1.1
 Content-Type: application/json
 
 {
