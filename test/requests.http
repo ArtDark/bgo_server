@@ -1,5 +1,10 @@
 ###
 GET http://localhost:9999/getCards HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 432425
+}
 
 ###
 PUT http://localhost:9999/editCard HTTP/1.1
@@ -21,7 +26,7 @@ POST http://localhost:9999/addCard HTTP/1.1
 Content-Type: application/json
 
 {
-
+  "id": 432425,
   "issuer":"VISA",
   "name_card":"New Virtual Card",
   "type":"Virtual"
