@@ -30,10 +30,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) getCards(w http.ResponseWriter, r *http.Request) {
-	cards := s.cardSvc.All(r.Context())
+	userCards := []*card.Card{}
+	card := &card.Card{}
 
-	dtos := make([]*dto.CardDTO, len(cards))
-	for i, c := range cards {
+	err := json.NewDecoder(r.Body).Decode(card)
+
+	for _, c := range s.cardSvc.All(r.Context()) {
+		if c.Id == card.Id {
+			userCards = append(userCards, c)
+		}
+
+	}
+
+	dtos := make([]*dto.CardDTO, len(userCards))
+	for i, c := range userCards {
 		dtos[i] = &dto.CardDTO{
 			Id:       c.Id,
 			Number:   c.Number,
